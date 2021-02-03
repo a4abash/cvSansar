@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+	<title>{% block 'title' %}  {% endblock %}</title>
+
+	<!--/tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Conceit Motorola web design" />
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--//tags -->
+	<link href="{% static 'css/bootstrap.css'%}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'css/style.css'%}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'css/prettyPhoto.css'%}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'css/font-awesome.css'%}" rel="stylesheet">
+	<!-- //for bootstrap working -->
+	<link href="http://fonts.googleapis.com/css?family=Raleway:100,100i,200,300,300i,400,400i,500,500i,600,600i,700,800" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="top_header" id="home">
+			<!-- Fixed navbar -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+				<div class="nav_top_fx_w3ls_agileinfo">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+							aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+						<div class="logo-w3layouts-agileits">
+							<h1> <a class="navbar-brand" href="index.html"><i class="fa fa-clone" aria-hidden="true"></i> CV <span class="desc">Online CV creator</span></a></h1>
+						</div>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<div class="nav_right_top">
+							<ul class="nav navbar-nav">
+
+								{% if user.is_authenticated %}
+									<li><a href="{% url 'dashboard' %}"><i class="fa fa-user-plus"></i> Dashboard</a></li>
+									<li><a href="{% url 'profile' %}"><i class="fa fa-user-plus"></i> Personal-Info</a></li>
+									<li><a href="{% url 'education' %}"><i class="fa fa-user-plus"></i> Education</a></li>
+									<li><a href="{% url 'skill' %}"><i class="fa fa-user-plus"></i> Skills</a></li>
+									<li><a href="{% url 'experience' %}"><i class="fa fa-user-plus"></i> Experience</a></li>
+							z		<li><a href="{% url 'signout' %}"><i class="fa fa-sign-in"></i> Logout</a></li>
+								{% else %}
+									<li><a href="{% url 'signup' %}"><i class="fa fa-user-plus"></i> Register</a></li>
+									<li><a href="{% url 'signin' %}"><i class="fa fa-sign-in"></i> Login</a></li>
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+			</nav>
+		</div>
+
+
+
+	!important
+
+
+
+.navbar-collapse{
+	grid-template-columns: 1fr;
+}
+.nav_right_top{
+	justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block 'body' %} {% endblock %}
+
+	<!-- footer -->
+	<div class="footer">
+		<div class="footer_inner_info_w3ls_agileits">
+			<div class="col-md-3 footer-left">
+				<h2><a href="index.html"><i class="fa fa-clone" aria-hidden="true"></i> Conceit </a></h2>
+				<p>Lorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
+				<ul class="social-nav model-3d-0 footer-social social two">
+					<li>
+						<a href="#" class="facebook">
+							<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+							<div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="twitter">
+							<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+							<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="instagram">
+							<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+							<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="pinterest">
+							<div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+							<div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-9 footer-right">
+				<div class="sign-grds">
+					<div class="col-md-4 sign-gd">
+						<h4>Latest <span>Info</span> </h4>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="404.html">Services</a></li>
+							<li><a href="signin.html">Signin</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3 sign-gd flickr-post">
+						<h4>Our <span>Works</span></h4>
+						<ul>
+							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
+							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
+							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
+							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
+							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
+							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
+							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
+							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
+							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
+						</ul>
+					</div>
+					<div class="col-md-5 sign-gd-two">
+						<h4>Contact <span>Information</span></h4>
+						<div class="address">
+							<div class="address-grid">
+								<div class="address-left">
+									<i class="fa fa-phone" aria-hidden="true"></i>
+								</div>
+								<div class="address-right">
+									<h6>Phone Number</h6>
+									<p>+1 234 567 8901</p>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+							<div class="address-grid">
+								<div class="address-left">
+									<i class="fa fa-envelope" aria-hidden="true"></i>
+								</div>
+								<div class="address-right">
+									<h6>Email Address</h6>
+									<p>Email :<a href="mailto:example@email.com"> mail@example.com</a></p>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+							<div class="address-grid">
+								<div class="address-left">
+									<i class="fa fa-map-marker" aria-hidden="true"></i>
+								</div>
+								<div class="address-right">
+									<h6>Location</h6>
+									<p>Broome St, NY 10002,California, USA.
+
+									</p>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	</div>
+	<!-- //footer -->
+
+</body>
+</html>

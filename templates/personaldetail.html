@@ -1,0 +1,20 @@
+{% extends 'base/master.html' %}
+
+{% block 'title' %} PersonalDetails - Dashboard {% endblock %}
+
+{% block 'body' %}
+
+<div class="banner_bottom">
+    <div class="container">
+        <div class="col-md-6">
+            <h2>Fill in Your Personal Details</h2><br>
+            <form action="#" method="POST" enctype="multipart/form-data">
+            {{form}}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

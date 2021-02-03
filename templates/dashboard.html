@@ -1,0 +1,88 @@
+{% extends 'base/master.html' %}
+{% load static %}
+{% block 'title' %} Dashboard {% endblock %}
+
+{% block 'body' %}
+
+<div class="banner_bottom">
+	<div class="container">
+		<div class="col-md-12">
+
+			<!--Heading section-->
+			<div class="box">
+<!--				<img src="{{MEDIA_URL}}{{attr.profile.url}}" style="border-radius: 50%; height: 200px; width: 20%;" align="right">-->
+				<h1><img src="{% static 'images/t4.jpg' %}" style="border-radius: 50%; height: 200px; width: 20%;" align="right">
+					<b>{{attr.full_name}}</b></h1><br> <h4><i class="fa fa-envelope"> {{user.email}} </i>
+					<i class="fa fa-home">{{attr.address}} </i> <i class="fa fa-phone"> {{attr.contact}}</i> </h4><br>
+				<hr/>
+			</div>
+
+			<!--Objective-->
+			<div class="box">
+				<h3><i class="fa fa-user"> Objective<br><br></i></h3>
+				{{attr.objective}}
+				</div><br/>
+
+			<!--Education-->
+			<div class="box">
+				<h3><i class="fa fa-university"> Education </i></h3> <br>
+				<table class="table">
+					<tr>
+						<th>Course Name</th>
+						<th>University|College</th>
+						<th>Enrolled date</th>
+						<th>Completion Date</th>
+					</tr>
+						{% for e in education %}
+					<tr>
+						<td>{{e.level}}</td>
+						<td>{{e.school}}</td>
+						<td>{{e.startYear}}</td>
+						<td>{{e.EndYear}}</td>
+					</tr>
+						{% endfor %}
+				</table>
+			</div><br/>
+
+			<!-- Experience -->
+			<div class="box">
+				<h3><i class="fa fa-briefcase"> Experience</i></h3><br>
+				<table class="table">
+					<tr>
+						<th>Company</th>
+						<th>Post</th>
+						<th>Start-Date</th>
+						<th>End-date</th>
+					</tr>
+					{%for ex in experience%}
+					<tr>
+                        <td>{{ex.company}}</td>
+                        <td>{{ex.post}}</td>
+                        <td>{{ex.start_date}}</td>
+                        <td>{{ex.end_date}}</td>
+					</tr>
+					{% endfor %}
+            </table>
+			</div>
+
+
+			<!--Skills-->
+			<div class="box">
+				<h3><i class="fa fa-cogs"> Skills<br><br></i></h3>
+				<ol>
+					{% for s in skill %}
+					<li>{{s.skill_title}}</li>
+					{% endfor %}
+				</ol>
+			</div><br/>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+{% endblock %}

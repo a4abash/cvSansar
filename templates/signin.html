@@ -1,0 +1,43 @@
+{% extends 'base/master.html' %}
+
+{% block 'title' %} Signin {% endblock %}
+
+{% block 'body' %}
+
+<div class="banner_bottom">
+        <div class="container">
+			<div class="col-md-4 col-md-offset-4">
+						<div class="box">
+							<h2>Sign-in</h2><br>
+							{%if messages %}
+								<div class = "alert alert-danger">
+									<ul>
+										{% for message in messages %}
+										<li>
+											{{ message }}
+										</li>
+										{% endfor %}
+									</ul>
+								</div>
+							{%endif%}
+						</div>
+
+					<form action="{% url 'signin' %}" method="POST" role="form">
+						{% csrf_token %}
+						<div class="form-group">
+							<label>Username<span class="required">*</span></label>
+							<input type="text" name="username" class="form-control" placeholder="Email">
+						</div>
+						<div class="form-group">
+							<label>Password<span class="required">*</span></label>
+							<input type="password" name="password" class="form-control" placeholder="password">
+						</div>
+						<button type="submit" class="btn btn-primary btn-inline col-sm-offset-4">Login</button>&nbsp; &nbsp; &nbsp;
+					</form>
+			</div>
+		</div>
+</div>
+
+
+
+{% endblock %}
