@@ -20,6 +20,8 @@ class PersonalDetailsForm(forms.ModelForm):
         exclude = ['user']
 
 
+
+
 class EducationForm(forms.ModelForm):
     school = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Bernhardt COllege'}))
     level = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'PLUS TWO'}))

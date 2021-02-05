@@ -1,18 +1,20 @@
 from django.shortcuts import render, redirect
 from .forms import PersonalDetailsForm,EducationForm,ExperienceForm,SkillForm
-from .models import Skill,PersonalDetails
 from django.contrib.auth.models import User
 from attributes.models import PersonalDetails, Education, Experience, Skill
 
 # Create your views here.
 
-def profile(request):
+
+def updateprofile(request):
     if request.method == 'GET':
-        a = PersonalDetails.objects.get(user_id=request.user.id)
+        a = User.objects.get(id=request.user.id)
+        attr = PersonalDetails.objects.get(user_id=a)
         context = {
-            'form': PersonalDetailsForm(instance=a)
+            'user': a,
+            'uform': PersonalDetailsForm(instance=attr)
         }
-        return render(request, 'personaldetail.html', context)
+        return render(request, 'updatePersonaldetail.html', context)
     else:
         a = PersonalDetails.objects.get(user_id=request.user.id)
         form = PersonalDetailsForm(request.POST, request.FILES or None, instance=a)
@@ -22,7 +24,7 @@ def profile(request):
             data.save()
             return redirect('dashboard')
         else:
-            return render(request, 'personaldetail.html', {'form': form})
+            return render(request, 'updatePersonaldetail.html', {'form': form})
 
 
 def education(request):

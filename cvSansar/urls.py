@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,7 +25,7 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('signup/', views.signup, name='signup'),
     path('dashboard', views.dashboard, name='dashboard'),
-    path('personaldetail/', views.personaldetail, name='personaldetail'),
+    path('personaldetail/', views.firstPersonaldetail, name='firstPersonaldetail'), # first ma aaune personal details section
     path('user/', include('attributes.urls')),
     path('signout', views.signout, name='signout'),  # url for logout function
-]
+]+  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

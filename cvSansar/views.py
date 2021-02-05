@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.models import User
 from attributes.models import PersonalDetails, Education, Experience, Skill
+from attributes.forms import PersonalDetailsForm
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -35,51 +37,67 @@ def signin(request):
         user = authenticate(username=u, password=p)
         if user is not None:
             login(request, user)
-            return redirect('dashboard')
+            id = request.user.id
+            x = checkIfExist(id)
+            if x == 10:
+                return redirect('dashboard')
+            else:
+                return redirect('firstPersonaldetail')
         else:
-            print("error occured")
             messages.error(request, "Your Password does not match")
             return redirect('signin')
 
 
-def personaldetail(request):
-    if request.method == 'GET':
-        return render(request, 'personaldetail.html')
+def checkIfExist(id):
+    try:
+        a = PersonalDetails.objects.get(user_id=id)
+        return 10
+    except:
+        return 20
+
+
+@login_required(login_url='signin')
+def firstPersonaldetail(request):
+    r = checkIfExist(request.user.id)
+    if r == 10:
+        return redirect('dashboard')
+    elif r == 20:
+        return redirect('firstPersonaldetail')
     else:
-        pass
+        if request.method == 'GET':
+            context = {
+                'form': PersonalDetailsForm()
+            }
+            return render(request, 'firstPersonaldetail.html', context)
+        else:
+            form = PersonalDetailsForm(request.POST, request.FILES or None)
+            if form.is_valid():
+                data = form.save(commit=False)
+                data.user_id = request.user.id
+                data.save()
+                return redirect('dashboard')
+            else:
+                return render(request, 'firstPersonaldetail.html', {'form': form})
 
 
 # Jobseeker project update section
+@login_required(login_url='signin')
 def dashboard(request):
     if request.method == 'GET':
-        try:
-            a = User.objects.get(id=request.user.id)
-            attr = PersonalDetails.objects.get(user_id=a)
-            education = Education.objects.filter(user_id=a)
-            skill = Skill.objects.filter(user_id=a)
-            experience = Experience.objects.filter(user_id=a)
-            context = {
-                'user': a,
-                'form': SignUpForm(),
-                'attr': attr,
-                'skill': skill,
-                'education': education,
-                'experience': experience,
-            }
-            return render(request, 'dashboard.html', context)
-        except:
-            a = User.objects.get(id=request.user.id)
-            education = Education.objects.filter(user_id=a)
-            skill = Skill.objects.filter(user_id=a)
-            experience = Experience.objects.filter(user_id=a)
-            context = {
-                'user': a,
-                'form': SignUpForm(),
-                'skill': skill,
-                'education': education,
-                'experience': experience,
-            }
-            return render(request, 'dashboard.html', context)
+        a = User.objects.get(id=request.user.id)
+        attr = PersonalDetails.objects.get(user_id=a)
+        education = Education.objects.filter(user_id=a)
+        skill = Skill.objects.filter(user_id=a)
+        experience = Experience.objects.filter(user_id=a)
+        context = {
+            'user': a,
+            'form': SignUpForm(),
+            'attr': attr,
+            'skill': skill,
+            'education': education,
+            'experience': experience,
+        }
+        return render(request, 'dashboard.html', context)
     else:
         return render(request, 'dashboard.html')
 

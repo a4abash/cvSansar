@@ -1,0 +1,54 @@
+{% load static %}
+<html>
+<head>
+    <title> PersonalDetail - CVSANSAR </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Conceit Motorola web design" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--//tags -->
+	<link href="{% static 'css/bootstrap.css'%}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'css/style.css'%}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'css/prettyPhoto.css'%}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'css/font-awesome.css'%}" rel="stylesheet">
+
+</head>
+<body>
+    <div class="top_header" id="home">
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="nav_top_fx_w3ls_agileinfo">
+                <div class="logo-w3layouts-agileits">
+                    <h1> <a class="navbar-brand" href="index.html"><i class="fa fa-clone" aria-hidden="true"></i> CV <span class="desc">Online CV creator</span></a></h1>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="banner_bottom">
+        <div class="container">
+            <div class="col-md-6">
+                <h2>Welcome to CVSANSAR </h2><br>
+                <form action="{% url 'firstPersonaldetail' %}" method="POST" enctype="multipart/form-data">
+                {{form}}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+

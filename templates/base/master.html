@@ -9,6 +9,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Conceit Motorola web design" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="application/x-javascript">
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -46,55 +48,28 @@
 							<h1> <a class="navbar-brand" href="index.html"><i class="fa fa-clone" aria-hidden="true"></i> CV <span class="desc">Online CV creator</span></a></h1>
 						</div>
 					</div>
-					<div id="navbar" class="navbar-collapse collapse">
-						<div class="nav_right_top">
-							<ul class="nav navbar-nav">
+						<div id="navbar" class="navbar-collapse collapse">
+							<div class="nav_right_top">
+								<ul class="nav navbar-nav">
 
-								{% if user.is_authenticated %}
-									<li><a href="{% url 'dashboard' %}"><i class="fa fa-user-plus"></i> Dashboard</a></li>
-									<li><a href="{% url 'profile' %}"><i class="fa fa-user-plus"></i> Personal-Info</a></li>
-									<li><a href="{% url 'education' %}"><i class="fa fa-user-plus"></i> Education</a></li>
-									<li><a href="{% url 'skill' %}"><i class="fa fa-user-plus"></i> Skills</a></li>
-									<li><a href="{% url 'experience' %}"><i class="fa fa-user-plus"></i> Experience</a></li>
-							z		<li><a href="{% url 'signout' %}"><i class="fa fa-sign-in"></i> Logout</a></li>
-								{% else %}
-									<li><a href="{% url 'signup' %}"><i class="fa fa-user-plus"></i> Register</a></li>
-									<li><a href="{% url 'signin' %}"><i class="fa fa-sign-in"></i> Login</a></li>
-								{% endif %}
-							</ul>
+									{% if user.is_authenticated %}
+										<li><a href="{% url 'dashboard' %}"><i class="fa fa-user-plus"></i> Dashboard</a></li>
+										<li><a href="{% url 'updateprofile' %}"><i class="fa fa-user-plus"></i> Personal-Info</a></li>
+										<li><a href="{% url 'education' %}"><i class="fa fa-user-plus"></i> Education</a></li>
+										<li><a href="{% url 'skill' %}"><i class="fa fa-user-plus"></i> Skills</a></li>
+										<li><a href="{% url 'experience' %}"><i class="fa fa-user-plus"></i> Experience</a></li>
+										<li><a href="{% url 'signout' %}"><i class="fa fa-sign-in"></i> Logout</a></li>
+									{% else %}
+										<li><a href="{% url 'signup' %}"><i class="fa fa-user-plus"></i> Register</a></li>
+										<li><a href="{% url 'signin' %}"><i class="fa fa-sign-in"></i> Login</a></li>
+									{% endif %}
+								</ul>
+							</div>
 						</div>
-					</div>
 					<!--/.nav-collapse -->
 				</div>
 			</nav>
 		</div>
-
-
-
-	!important
-
-
-
-.navbar-collapse{
-	grid-template-columns: 1fr;
-}
-.nav_right_top{
-	justify-content: center;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {% block 'body' %} {% endblock %}
 
@@ -102,34 +77,8 @@
 	<div class="footer">
 		<div class="footer_inner_info_w3ls_agileits">
 			<div class="col-md-3 footer-left">
-				<h2><a href="index.html"><i class="fa fa-clone" aria-hidden="true"></i> Conceit </a></h2>
-				<p>Lorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
-				<ul class="social-nav model-3d-0 footer-social social two">
-					<li>
-						<a href="#" class="facebook">
-							<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="twitter">
-							<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="instagram">
-							<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="pinterest">
-							<div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
-						</a>
-					</li>
-				</ul>
+				<h2><a href="index.html"><i class="fa fa-clone" aria-hidden="true"></i> Cvsansar </a></h2>
+				<p>CVSANSAR is a platform where user can create their account and create cv and download in pdf format. Once user create their cv it is stored in our database and they can download when they need it.</p>
 			</div>
 			<div class="col-md-9 footer-right">
 				<div class="sign-grds">
@@ -138,24 +87,43 @@
 						<ul>
 							<li><a href="index.html">Home</a></li>
 							<li><a href="about.html">About</a></li>
-							<li><a href="404.html">Services</a></li>
-							<li><a href="signin.html">Signin</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="#">Contact us</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3 sign-gd flickr-post">
-						<h4>Our <span>Works</span></h4>
-						<ul>
-							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
-							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
-							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
-							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
-							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
-							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
-							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
-							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
-							<li><a href="single.html"><img src="{% static 'images/g1.jpg'%}" alt=" " class="img-responsive" /></a></li>
+						<h4>Social <span>Links</span></h4>
+
+						<ul class="social-nav model-3d-0 footer-social social two">
+							<li>
+								<a href="#" class="facebook">
+									<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+									<div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+								</a>
+							</li>
+
+							<li>
+								<a href="#" class="twitter">
+									<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+									<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+								</a>
+							</li>
 						</ul>
+
+						<ul class="social-nav model-3d-0 footer-social social two">
+							<li>
+								<a href="#" class="instagram">
+									<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+									<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="pinterest">
+									<div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+									<div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+								</a>
+							</li>
+						</ul>
+
 					</div>
 					<div class="col-md-5 sign-gd-two">
 						<h4>Contact <span>Information</span></h4>
@@ -166,7 +134,7 @@
 								</div>
 								<div class="address-right">
 									<h6>Phone Number</h6>
-									<p>+1 234 567 8901</p>
+									<p>+981437654</p>
 								</div>
 								<div class="clearfix"> </div>
 							</div>
@@ -176,7 +144,7 @@
 								</div>
 								<div class="address-right">
 									<h6>Email Address</h6>
-									<p>Email :<a href="mailto:example@email.com"> mail@example.com</a></p>
+									<p>Email :<a href="mailto:a4abash@gmail.com"> a4abash@gmail.com</a></p>
 								</div>
 								<div class="clearfix"> </div>
 							</div>
@@ -186,7 +154,7 @@
 								</div>
 								<div class="address-right">
 									<h6>Location</h6>
-									<p>Broome St, NY 10002,California, USA.
+									<p>Kathmandu-32 Opi marg
 
 									</p>
 								</div>
