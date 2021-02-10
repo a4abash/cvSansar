@@ -1,0 +1,76 @@
+{% load static %}
+{% block 'body' %}
+
+<div class="banner_bottom">
+	<div class="container">
+		<div class="col-md-12">
+			<!--Heading section-->
+			<div class="box">
+				<img src="{{MEDIA_URL}}{{attr.profile.url}}" style="border-radius: 50%; height: 200px; width: 20%;" align="right">
+					<h1><b>{{attr.full_name}}</b></h1><h4>Email: {{user.email}}<br>Address:{{attr.address}}<br>Contact:{{attr.contact}}<br>Website:{{attr.website}}</h4><br>
+<!--				Profile picture section not working {{attr.profile.url}}-->
+<!--				<img src="http://localhost:8000/user/pdf_view/attr.profile.url">-->
+				<hr/>
+			</div>
+
+			<!--Objective-->
+			<div class="box">
+				<h3>Objective</h3>
+				{{attr.objective}}
+				</div><br/>
+
+			<!--Education-->
+			<div class="box">
+				<h3>Education</h3>
+				<table class="table">
+					<tr>
+						<th align="left">Course Name</th>
+						<th align="left">University|College</th>
+						<th align="left">Enrolled date</th>
+						<th align="left">Completion Date</th>
+					</tr>
+						{% for e in education %}
+					<tr>
+						<td>{{e.level}}</td>
+						<td>{{e.school}}</td>
+						<td>{{e.startYear}}</td>
+						<td>{{e.EndYear}}</td>
+					</tr>
+						{% endfor %}
+				</table>
+			</div><br/>
+
+			<!-- Experience -->
+			<div class="box">
+				<h3>Experience</h3>
+				<table class="table">
+					<tr>
+						<th align="left">Company</th>
+						<th align="left">Post</th>
+						<th align="left">Start-Date</th>
+						<th align="left">End-date</th>
+					</tr>
+					{%for ex in experience%}
+					<tr>
+                        <td>{{ex.company}}</td>
+                        <td>{{ex.post}}</td>
+                        <td>{{ex.start_date}}</td>
+                        <td>{{ex.end_date}}</td>
+					</tr>
+					{% endfor %}
+            </table>
+			</div>
+			<!--Skills-->
+			<div class="box">
+				<h3>Skills</h3>
+				<ol>
+					{% for s in skill %}
+					<li>{{s.skill_title}}</li>
+					{% endfor %}
+				</ol>
+			</div><br/>
+			<h5>References available upon request</h5>
+		</div>
+	</div>
+</div>
+{% endblock %}

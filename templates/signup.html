@@ -1,22 +1,18 @@
 {% extends 'base/master.html'%}
 {% block 'title' %}SIGN-UP{%  endblock %}
 {% block 'body' %}
-
-
-<!-- Main -->
-<div class="banner_bottom">
-        <div class="container">
+	<div class="banner_bottom">
+		<div class="container">
 			<div class="col-md-6 col-md-offset-3">
-					<h2>Register</h2>
+				<h2>Register</h2>
+				<br>
+				<form action="{% url 'signup' %}" method="POST" role="form">
+					{{ form }}
+					{% csrf_token %}
 					<br>
-					<form action="{% url 'signup' %}" method="POST" role="form">
-						{{ form }}
-						{% csrf_token %}
-						<br>
-						<button type="submit" class="btn btn-primary">Register</button>
-					</form>
+					<button type="submit" class="btn btn-primary">Register</button>
+				</form>
 			</div>
 		</div>
-</div>
-			<!-- Page Content / End -->
-            {% endblock %}
+	</div>
+{% endblock %}

@@ -8,10 +8,12 @@ from attributes.forms import PersonalDetailsForm
 from django.contrib.auth.decorators import login_required
 
 
+# home page
 def home(request):
     return render(request, 'index.html')
 
 
+# signup page
 def signup(request):
     if request.method == 'GET':
         context = {
@@ -28,6 +30,7 @@ def signup(request):
             return render(request, 'signup.html', {'form': form})
 
 
+# login page
 def signin(request):
     if request.method == 'GET':
         return render(request, 'signin.html')
@@ -48,6 +51,7 @@ def signin(request):
             return redirect('signin')
 
 
+# check if user is new
 def checkIfExist(id):
     try:
         a = PersonalDetails.objects.get(user_id=id)
@@ -56,13 +60,12 @@ def checkIfExist(id):
         return 20
 
 
+# redirects new user to personaldetail section
 @login_required(login_url='signin')
 def firstPersonaldetail(request):
     r = checkIfExist(request.user.id)
     if r == 10:
         return redirect('dashboard')
-    elif r == 20:
-        return redirect('firstPersonaldetail')
     else:
         if request.method == 'GET':
             context = {
@@ -80,7 +83,7 @@ def firstPersonaldetail(request):
                 return render(request, 'firstPersonaldetail.html', {'form': form})
 
 
-# Jobseeker project update section
+# User dashboard
 @login_required(login_url='signin')
 def dashboard(request):
     if request.method == 'GET':
@@ -102,7 +105,12 @@ def dashboard(request):
         return render(request, 'dashboard.html')
 
 
-# for signout
+# about us page
+def aboutUs(request):
+    return render(request, 'about.html')
+
+
+# User logout section
 def signout(request):
     logout(request)
     return redirect('signin')
